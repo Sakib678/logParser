@@ -19,6 +19,10 @@ with open('cowrie.json', 'r') as file:
             elif event_id == 'cowrie.login.failed':
                 failure_counter[event_id] += 1
 
+            src_ip = json_data.get('src_ip')
+            if src_ip:
+                ip_counter[src_ip] += 1
+
 
         except json.JSONDecodeError:
             continue
@@ -34,3 +38,7 @@ for event, count in success_counter.most_common():
 print("\n----- Failed Logins -----")
 for event, count in failure_counter.most_common():
     print(f"{event}: {count}")
+
+print("\n----- Top 10 Source IPs -----")
+for ip, count in ip_counter.most_common(10):
+    print(f"{ip}: {count}")
