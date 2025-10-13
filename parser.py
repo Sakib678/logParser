@@ -23,6 +23,9 @@ with open('cowrie.json', 'r') as file:
             if src_ip:
                 ip_counter[src_ip] += 1
 
+            username = json_data.get('username')
+            if username:
+                username_counter[username] += 1
 
         except json.JSONDecodeError:
             continue
@@ -42,3 +45,9 @@ for event, count in failure_counter.most_common():
 print("\n----- Top 10 Source IPs -----")
 for ip, count in ip_counter.most_common(10):
     print(f"{ip}: {count}")
+
+print("\n----- Top 10 Usernames Attempted -----")
+for user, count in username_counter.most_common(10):
+    print(f"{user}: {count}")
+
+
