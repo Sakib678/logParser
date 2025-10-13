@@ -14,6 +14,12 @@ with open('cowrie.json', 'r') as file:
             event_id = json_data.get('eventid', 'unknown')
             event_counter[event_id] += 1
 
+            if event_id == 'cowrie.login.success':
+                success_counter[event_id] += 1
+            elif event_id == 'cowrie.login.failed':
+                failure_counter[event_id] += 1
+
+
         except json.JSONDecodeError:
             continue
 
@@ -21,3 +27,10 @@ print("----- Event Counter -----")
 for event, count in event_counter.most_common():
     print(f"{event}: {count}")
 
+print("\n----- Successful Logins -----")
+for event, count in success_counter.most_common():
+    print(f"{event}: {count}")
+
+print("\n----- Failed Logins -----")
+for event, count in failure_counter.most_common():
+    print(f"{event}: {count}")
