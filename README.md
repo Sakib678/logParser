@@ -13,8 +13,8 @@ This project automates the analysis of **Cowrie honeypot logs** in order to make
 ###  Key Findings
 After running the analysis for two days of Cowrie logs:
 - **“root”** was by far the most common username, followed by **“admin”**  
-- Several IPs had **AbuseIPDB confidence scores above 80**, confirming malicious behaviour  
-- All attempts targeted **port 22 (SSH)** or **port 23 (Telnet)** 
+- One IP had an **AbuseIPDB confidence score of 76**, confirming malicious behaviour  
+- A majority of the attempts targeted **port 22 (SSH)** 
 
 > The insights from a honeypot can be used to detect brute-force attacks or strengthen firewall rules.
 
